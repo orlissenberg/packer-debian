@@ -31,7 +31,7 @@
       "ssh_password": "debian780",
       "ssh_port": 22,
       "ssh_wait_timeout": "30s",
-      "shutdown_command": "echo 'debian780' | sudo -S shutdown -P now",
+      "shutdown_command": "echo 'debian780' | sudo -S shutdown -h now",
       "ssh_wait_timeout": "60m",
       "vm_name": "debian-iso780-amd64",
       "output_directory": "build",
