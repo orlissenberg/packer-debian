@@ -1,0 +1,38 @@
+#http://docs.ansible.com/galaxy.html#installing-roles
+
+# Docker
+- src: https://github.com/orlissenberg/ansible-docker
+  version: master
+  name: docker
+  path: ansible/roles/
+
+# Oracle JAVA
+- src: https://github.com/orlissenberg/ansible-oracle-java
+  version: master
+  name: oracle-java
+  path: ansible/roles/
+
+# OH MY ZSH
+- src: https://github.com/orlissenberg/ansible-oh-my-zsh
+  version: master
+  name: oh-my-zsh
+  path: ansible/roles/
+
+# IPTABLES
+- src: https://github.com/orlissenberg/ansible-iptables
+  version: master
+  name: iptables
+  path: ansible/roles/
+
+# Debian Dawn
+- src: https://github.com/orlissenberg/ansible-debian-dawn
+  version: master
+  name: dawn
+  path: ansible/roles/
+
+# Elasticsearch
+- src: https://github.com/orlissenberg/ansible-elasticsearch
+  version: master
+  name: elasticsearch
+  path: ansible/roles/
+

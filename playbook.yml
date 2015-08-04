@@ -1,0 +1,14 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  sudo: yes
+
+  tasks:
+    - name: Install fail2ban.
+      apt: name=fail2ban state=latest
+
+#  roles:
+#    - docker
+
+# Fin.

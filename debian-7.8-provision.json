@@ -1,0 +1,33 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-ovf",
+      "source_path": "build/debian-iso780-amd64.ovf",
+      "ssh_username": "debian",
+      "ssh_password": "debian780",
+      "ssh_wait_timeout": "30s",
+      "shutdown_command": "echo 'debian780' | sudo -S shutdown -P now"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "build/debian-7.8-x86_64.box"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "scripts": [
+        "scripts/vagrant.sh"
+      ],
+      "execute_command": "echo 'debian780' | sudo -S bash {{.Path}}"
+    },
+    {
+      "type": "ansible-local",
+      "playbook_file": "playbook.yml",
+      "playbook_dir": "ansible",
+      "extra_arguments": ["-v"]
+    }
+  ]
+}
