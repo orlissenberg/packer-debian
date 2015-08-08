@@ -42,6 +42,14 @@ if [ ! -d ./ansible-go ]; then
     git clone https://github.com/orlissenberg/ansible-go.git
 fi
 
+if [ ! -d ./ansible-supervisord  ]; then
+    git clone https://github.com/orlissenberg/ansible-supervisord.git
+fi
+
+if [ ! -d ./ansible-php  ]; then
+    git clone https://github.com/orlissenberg/ansible-php.git
+fi
+
 # forked
 
 if [ ! -d ./ansible-nginx ]; then
@@ -50,12 +58,4 @@ fi
 
 if [ ! -d ./ansible-postgresql ]; then
     git clone https://github.com/orlissenberg/ansible-postgresql.git
-fi
-
-if [ ! -d ./ansible-supervisord  ]; then
-    git clone https://github.com/orlissenberg/ansible-supervisord.git
-fi
-
-if [ ! -d ./ansible-php  ]; then
-    git clone https://github.com/orlissenberg/ansible-php.git
 fi
