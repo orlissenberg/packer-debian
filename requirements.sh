@@ -50,6 +50,10 @@ if [ ! -d ./ansible-php  ]; then
     git clone https://github.com/orlissenberg/ansible-php.git
 fi
 
+if [ ! -d ./ansible-zendserver  ]; then
+    git clone https://github.com/orlissenberg/ansible-zendserver.git
+fi
+
 # forked
 
 if [ ! -d ./ansible-nginx ]; then
