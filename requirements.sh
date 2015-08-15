@@ -58,6 +58,10 @@ if [ ! -d ./ansible-mariadb  ]; then
     git clone https://github.com/orlissenberg/ansible-mariadb.git
 fi
 
+if [ ! -d ./ansible-db-maintenance  ]; then
+    git clone https://github.com/orlissenberg/ansible-db-maintenance.git
+fi
+
 # forked
 
 if [ ! -d ./ansible-nginx ]; then
