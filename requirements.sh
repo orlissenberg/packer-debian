@@ -54,6 +54,10 @@ if [ ! -d ./ansible-zendserver  ]; then
     git clone https://github.com/orlissenberg/ansible-zendserver.git
 fi
 
+if [ ! -d ./ansible-mariadb  ]; then
+    git clone https://github.com/orlissenberg/ansible-mariadb.git
+fi
+
 # forked
 
 if [ ! -d ./ansible-nginx ]; then

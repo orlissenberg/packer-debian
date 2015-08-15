@@ -19,6 +19,7 @@ zsh_users:
   - debian
 
 nginx_install_method: "package"
+nginx_uninstall_apache: true
 
 php_install_composer: true
 php_install_laravel: true
@@ -26,6 +27,50 @@ php_laravel_user: debian
 php_error_reporting: "E_ALL"
 php_display_errors: "On"
 php_display_startup_errors: "On"
+
+mariadb_root_password: "i_am_root"
+mariadb_phpmyadmin_pw: "i_am_admin"
+mariadb_phpmyadmin_pw_controluser: "i_am_control"
+mariadb_phpmyadmin_install: true
+
+postgresql_default_auth_method: "md5"
+
+postgresql_pg_hba_default:
+  - type: local
+    database: all
+    user: '{{ postgresql_admin_user }}'
+    address: ''
+    method: 'peer'
+    comment: ''
+  - type: local
+    database: all
+    user: all
+    address: ''
+    method: '{{ postgresql_default_auth_method }}'
+    comment: '"local" is for Unix domain socket connections only'
+  - type: host
+    database: all
+    user: all
+    address: '192.168.0.0/16'
+    method: '{{ postgresql_default_auth_method }}'
+    comment: 'IPv4 local connections:'
+  - type: host
+    database: all
+    user: all
+    address: '::1/128'
+    method: '{{ postgresql_default_auth_method }}'
+    comment: 'IPv6 local connections:'
+
+postgresql_users:
+  - name: testuser
+    pass: testpass
+
+postgresql_user_privileges:
+  - name: testuser
+    role_attr_flags: LOGIN
+
+postgresql_listen_addresses:
+  - 0.0.0.0
 
 EOF
 
@@ -51,21 +96,22 @@ cat << EOF > $TMP_DIR/playbook.yml
     - shell: echo 'busy'
 
   post_tasks:
-    - service: name=apache2 state=stopped enabled=no #must_exist=false (added in 2.0)
-    - service: name=nginx state=started enabled=yes #must_exist=false (added in 2.0)
+#    - service: name=apache2 state=stopped enabled=no #must_exist=false (added in 2.0)
+#    - service: name=nginx state=started enabled=yes #must_exist=false (added in 2.0)
+#    - service: name=postgresql state=restarted enabled=yes #must_exist=false (added in 2.0)
     - shell: echo 'goodbye'
     - shell: updatedb
 
   roles:
-    - ansible-oh-my-zsh
-    - ansible-oracle-java
-    - ansible-elasticsearch
-    - ansible-nginx
-    - ansible-php
-    - ansible-postgresql
-    - ansible-go
-    - ansible-kibana
-    - ansible-mysql
+#    - ansible-oh-my-zsh
+#    - ansible-mariadb
+#    - ansible-oracle-java
+#    - ansible-elasticsearch
+#    - ansible-nginx
+#    - ansible-php
+#    - ansible-postgresql
+#    - ansible-go
+#    - ansible-kibana
 
 EOF
 
@@ -79,10 +125,17 @@ ansible-playbook $TMP_DIR/playbook.yml -i $TMP_DIR/hosts
 
 # web
 # http://192.168.33.102/
+service nginx status
+
+# mariadb - phpmyadmin
+# https://192.168.33.102:444
 
 # elasticsearch
 # http://192.168.33.102:9200/
 # http://192.168.33.102:9200/_plugin/head
+# service elasticsearc status
 
 # sudo /usr/local/kibana/bin/kibana
 # http://192.168.33.102:5601
+
+
