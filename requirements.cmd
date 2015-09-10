@@ -24,4 +24,6 @@ IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-mumble" git clone https://git
 
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-php" git clone https://github.com/orlissenberg/ansible-php.git
 
+IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-intellij-idea" git clone https://github.com/orlissenberg/ansible-intellij-idea.git
+
 cd "%PROJECT_PATH%"
