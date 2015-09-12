@@ -62,6 +62,10 @@ if [ ! -d ./ansible-db-maintenance  ]; then
     git clone https://github.com/orlissenberg/ansible-db-maintenance.git
 fi
 
+if [ ! -d ./ansible-intellij-idea  ]; then
+    git clone https://github.com/orlissenberg/ansible-intellij-idea.git
+fi
+
 # forked
 
 if [ ! -d ./ansible-nginx ]; then

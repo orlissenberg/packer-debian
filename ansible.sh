@@ -61,13 +61,15 @@ postgresql_pg_hba_default:
     method: '{{ postgresql_default_auth_method }}'
     comment: 'IPv6 local connections:'
 
+idea_install_gnome: true
+
 postgresql_users:
   - name: testuser
     pass: testpass
 
 postgresql_user_privileges:
   - name: testuser
-    role_attr_flags: LOGIN
+    role_attr_flags: LOGIN,SUPERUSER
 
 postgresql_listen_addresses:
   - 0.0.0.0
@@ -103,15 +105,16 @@ cat << EOF > $TMP_DIR/playbook.yml
     - shell: updatedb
 
   roles:
-#    - ansible-oh-my-zsh
+    - ansible-oh-my-zsh
 #    - ansible-mariadb
-#    - ansible-oracle-java
-#    - ansible-elasticsearch
-#    - ansible-nginx
-#    - ansible-php
-#    - ansible-postgresql
-#    - ansible-go
-#    - ansible-kibana
+    - ansible-oracle-java
+    - ansible-elasticsearch
+    - ansible-nginx
+    - ansible-php
+    - ansible-postgresql
+    - ansible-go
+    - ansible-kibana
+    - ansible-intellij-idea
 
 EOF
 
@@ -137,5 +140,3 @@ service nginx status
 
 # sudo /usr/local/kibana/bin/kibana
 # http://192.168.33.102:5601
-
-
