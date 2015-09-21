@@ -115,9 +115,10 @@ cat << EOF > $TMP_DIR/playbook.yml
 #    - ansible-iptables
     - ansible-oh-my-zsh
 #    - ansible-mariadb
+    - ansible-mysql
     - ansible-elasticsearch
     - ansible-postgresql
-    - ansible-go
+#    - ansible-go
     - ansible-kibana
 #    - ansible-intellij-idea
 
