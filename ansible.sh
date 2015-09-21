@@ -33,6 +33,9 @@ mariadb_phpmyadmin_pw: "i_am_admin"
 mariadb_phpmyadmin_pw_controluser: "i_am_control"
 mariadb_phpmyadmin_install: true
 
+percona_build_path: true
+mysql_benchmark_install: true
+
 postgresql_default_auth_method: "md5"
 
 postgresql_pg_hba_default:
@@ -105,16 +108,18 @@ cat << EOF > $TMP_DIR/playbook.yml
     - shell: updatedb
 
   roles:
+    - ansible-oracle-java
+    - ansible-zendserver
+#    - ansible-php
+#    - ansible-nginx
+#    - ansible-iptables
     - ansible-oh-my-zsh
 #    - ansible-mariadb
-    - ansible-oracle-java
     - ansible-elasticsearch
-    - ansible-nginx
-    - ansible-php
     - ansible-postgresql
     - ansible-go
     - ansible-kibana
-    - ansible-intellij-idea
+#    - ansible-intellij-idea
 
 EOF
 
@@ -128,7 +133,7 @@ ansible-playbook $TMP_DIR/playbook.yml -i $TMP_DIR/hosts
 
 # web
 # http://192.168.33.102/
-service nginx status
+# service nginx status
 
 # mariadb - phpmyadmin
 # https://192.168.33.102:444
