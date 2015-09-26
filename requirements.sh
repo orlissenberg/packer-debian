@@ -2,6 +2,8 @@
 
 apt-get install git vim -y
 
+mkdir -p {'ansible/'{'roles'}}
+
 if [ ! -d ./ansible/roles ]; then
     echo 'Ansible roles folder not found.';
     exit;
@@ -64,6 +66,10 @@ fi
 
 if [ ! -d ./ansible-intellij-idea  ]; then
     git clone https://github.com/orlissenberg/ansible-intellij-idea.git
+fi
+
+if [ ! -d ./ansible-nodejs  ]; then
+    git clone https://github.com/orlissenberg/ansible-nodejs.git
 fi
 
 # forked
