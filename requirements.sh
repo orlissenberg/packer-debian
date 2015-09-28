@@ -66,6 +66,14 @@ if [ ! -d ./ansible-intellij-idea  ]; then
     git clone https://github.com/orlissenberg/ansible-intellij-idea.git
 fi
 
+if [ ! -d ./ansible-mysql  ]; then
+    git clone https://github.com/orlissenberg/ansible-mysql.git
+fi
+
+if [ ! -d ./ansible-nodejs  ]; then
+    git clone https://github.com/orlissenberg/ansible-nodejs.git
+fi
+
 # forked
 
 if [ ! -d ./ansible-nginx ]; then
