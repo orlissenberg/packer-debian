@@ -73,10 +73,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--draganddrop", "hosttoguest"]
   end
 
+  # Not for Windows :(
   # https://docs.vagrantup.com/v2/provisioning/ansible.html
-  config.vm.provision "ansible" do |ansible|
-    ansible.playbook = "playbook-vagrant.yml"
-  end
+  # config.vm.provision "ansible" do |ansible|
+  #   ansible.playbook = "playbook-vagrant.yml"
+  # end
 
   # config.vbguest.iso_path = "E:\\Oracle\\VirtualBox\\VBoxGuestAdditions.iso"
 

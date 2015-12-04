@@ -58,6 +58,10 @@ if [ ! -d ./ansible-zendserver  ]; then
     git clone https://github.com/orlissenberg/ansible-zendserver.git
 fi
 
+if [ ! -d ./ansible-mumble  ]; then
+    git clone https://github.com/orlissenberg/ansible-mumble.git
+fi
+
 # Database
 if [ ! -d ./ansible-mariadb  ]; then
     git clone https://github.com/orlissenberg/ansible-mariadb.git
