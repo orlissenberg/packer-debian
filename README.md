@@ -1,6 +1,10 @@
-# packer-debian-7.8
+# packer-debian
 
-Packer Build VirtualBox-Iso Debian 7.8 with Ansible Provisioner
+Packer Build VirtualBox-Iso Debian with Ansible Provisioner
+
+## Debian Jessie
+
+http://cdimage.debian.org/debian-cd/8.2.0/amd64/iso-cd/
 
 ### Notes
 

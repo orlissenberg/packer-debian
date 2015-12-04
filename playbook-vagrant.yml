@@ -1,0 +1,17 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  sudo: yes
+
+  vars:
+    php_major_version: 7
+
+  tasks:
+    - name: Install fail2ban.
+      apt: name=fail2ban state=latest
+
+  roles:
+    - ansible-php
+
+# Fin.

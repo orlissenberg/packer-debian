@@ -10,11 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian-7.8-x86_64"
+  config.vm.box = "debian-8.2-x86_64"
+
+  # Official Puppet Labs Vagrant boxes.
+  # https://atlas.hashicorp.com/puppetlabs
   # config.vm.box = "puppetlabs/debian-7.8-64-puppet"
 
   config.ssh.username = "debian"
-  config.ssh.password = "debian780"
+  config.ssh.password = "debian820"
   # config.ssh.port = 22
 
   # Disable automatic box update checking. If you disable this, then
@@ -71,9 +74,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # https://docs.vagrantup.com/v2/provisioning/ansible.html
-  # config.vm.provision "ansible" do |ansible|
-  #   ansible.playbook = "playbook.yml"
-  # end
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "playbook-vagrant.yml"
+  end
 
   # config.vbguest.iso_path = "E:\\Oracle\\VirtualBox\\VBoxGuestAdditions.iso"
 

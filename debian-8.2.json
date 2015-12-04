@@ -23,17 +23,17 @@
       "type": "virtualbox-iso",
       "disk_size": 40000,
       "guest_os_type": "Debian_64",
-      "iso_url": "http://cdimage.debian.org/cdimage/archive/7.9.0/amd64/iso-cd/debian-7.9.0-amd64-netinst.iso",
-      "iso_checksum": "",
+      "iso_url": "http://cdimage.debian.org/debian-cd/8.2.0/amd64/iso-cd/debian-8.2.0-amd64-netinst.iso",
+      "iso_checksum": "923cd1bfbfa62d78aecaa92d919ee54a95c8fca834b427502847228cf06155e7243875f59279b0bf6bfd1b579cbe2f1bc80528a265dafddee9a9d2a197ef3806",
       "shutdown_command": "echo 'vagrant'|sudo -S /sbin/halt -h -p",
-      "iso_checksum_type": "none",
+      "iso_checksum_type": "sha512",
       "ssh_username": "debian",
-      "ssh_password": "debian780",
+      "ssh_password": "debian820",
       "ssh_port": 22,
       "ssh_wait_timeout": "30s",
-      "shutdown_command": "echo 'debian780' | sudo -S shutdown -h now",
+      "shutdown_command": "echo 'debian820' | sudo -S shutdown -P now",
       "ssh_wait_timeout": "60m",
-      "vm_name": "debian-iso780-amd64",
+      "vm_name": "debian-iso820-amd64",
       "output_directory": "build",
       "vboxmanage": [
         [
@@ -58,7 +58,7 @@
         "scripts/base.sh",
         "scripts/ansible.sh"
       ],
-      "execute_command": "echo 'debian780' | sudo -S bash {{.Path}}"
+      "execute_command": "echo 'debian820' | sudo -S bash {{.Path}}"
     }
   ]
 }
