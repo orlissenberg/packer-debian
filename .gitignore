@@ -6,3 +6,4 @@ build/
 output-virtualbox-ovf
 ansible_vars_dump.json
 projects/
+tmp/
