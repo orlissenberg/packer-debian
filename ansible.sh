@@ -10,7 +10,7 @@ cat << EOF > $TMP_DIR/hosts
 localhost ansible_connection=local
 EOF
 
-# Create group_vars for the webservers
+# Create group_vars for the web servers
 mkdir -p $TMP_DIR/group_vars 2> /dev/null
 cat << EOF > $TMP_DIR/group_vars/webservers
 
@@ -65,6 +65,8 @@ postgresql_pg_hba_default:
     comment: 'IPv6 local connections:'
 
 idea_install_gnome: true
+idea_install_chrome: true
+idea_install_sublime: true
 
 postgresql_users:
   - name: testuser
@@ -109,18 +111,19 @@ cat << EOF > $TMP_DIR/playbook.yml
 
   roles:
     - ansible-oracle-java
-    - ansible-zendserver
+    - ansible-oh-my-zsh
+    - ansible-intellij-idea
+    - ansible-php
+#    - ansible-zendserver
 #    - ansible-php
 #    - ansible-nginx
 #    - ansible-iptables
-    - ansible-oh-my-zsh
 #    - ansible-mariadb
-    - ansible-mysql
-    - ansible-elasticsearch
-    - ansible-postgresql
+#    - ansible-mysql
+#    - ansible-elasticsearch
+#    - ansible-postgresql
 #    - ansible-go
-    - ansible-kibana
-#    - ansible-intellij-idea
+#    - ansible-kibana
 
 EOF
 
