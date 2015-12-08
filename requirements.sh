@@ -49,6 +49,10 @@ if [ ! -d ./ansible-oh-my-zsh ]; then
     git clone https://github.com/orlissenberg/ansible-oh-my-zsh.git
 fi
 
+if [ ! -d ./ansible-nodejs ]; then
+    git clone https://github.com/orlissenberg/ansible-nodejs.git
+fi
+
 # Web server
 if [ ! -d ./ansible-nginx ]; then
     git clone https://github.com/orlissenberg/ansible-nginx.git

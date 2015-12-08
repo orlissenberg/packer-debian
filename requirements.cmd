@@ -29,12 +29,12 @@ IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-oh-my-zsh" git clone https://
 
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-intellij-idea" git clone https://github.com/orlissenberg/ansible-intellij-idea.git
 
+IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-nodejs" git clone https://github.com/orlissenberg/ansible-nodejs.git
+
 REM Web server
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-zendserver" git clone https://github.com/orlissenberg/ansible-zendserver.git
 
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-nginx" git clone https://github.com/orlissenberg/ansible-nginx.git
-
-IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-mumble" git clone https://github.com/orlissenberg/ansible-mumble.git
 
 REM Database
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-mariadb" git clone https://github.com/orlissenberg/ansible-mariadb.git
@@ -51,5 +51,9 @@ IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-elasticsearch" git clone http
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-kibana" git clone https://github.com/orlissenberg/ansible-kibana.git
 
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-logstash" git clone https://github.com/orlissenberg/ansible-logstash.git
+
+REM Various
+
+IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-mumble" git clone https://github.com/orlissenberg/ansible-mumble.git
 
 cd "%PROJECT_PATH%"

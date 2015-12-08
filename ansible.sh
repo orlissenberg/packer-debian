@@ -77,6 +77,36 @@ postgresql_user_privileges:
 postgresql_listen_addresses:
   - 0.0.0.0
 
+mumble_admin_password: "test-admin"
+mumble_db_path: /var/lib/mumble-server/mumble-server.sqlite
+mumble_log_path: /var/log/mumble-server/mumble-server.log
+mumble_port: 64746
+mumble_server_password: "test"
+mumble_max_bandwidth: 72000
+mumble_max_users: 10
+mumble_user_name: "mumble-server"
+mumble_welcome_text: "<br />Welcome to this server running <b>Murmur</b>.<br />"
+mumble_reset: true
+mumble_revoke_self_register: true
+
+mumble_channels:
+    - name: "Ingress"
+      id: 10
+      parent_id: 0
+      server_id: 1
+    - name: "The Lounge"
+      id: 12
+      parent_id: 0
+      server_id: 1
+    - name: "Enlightened"
+      id: 14
+      parent_id: 10
+      server_id: 1
+
+nodejs_install_gulp: true
+nodejs_install_grunt: true
+nodejs_install_coffee_script: true
+
 EOF
 
 # Create Ansible config
@@ -112,17 +142,17 @@ cat << EOF > $TMP_DIR/playbook.yml
     - ansible-oh-my-zsh
     - ansible-intellij-idea
     - ansible-php
-#    - ansible-nginx
-#    - ansible-docker
-#    - ansible-mariadb
+    - ansible-nginx
+    - ansible-docker
+    - ansible-mariadb
 #    - ansible-postgresql
 #    - ansible-go
 #    - ansible-elasticsearch
 #    - ansible-kibana
 #    - ansible-logstash
 #    - ansible-nodejs
-#    - ansible-iptables
 #    - ansible-mumble
+#    - ansible-iptables
 #    - ansible-supervisord
 
 # Alternatives
