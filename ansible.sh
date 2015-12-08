@@ -32,9 +32,7 @@ mariadb_root_password: "i_am_root"
 mariadb_phpmyadmin_pw: "i_am_admin"
 mariadb_phpmyadmin_pw_controluser: "i_am_control"
 mariadb_phpmyadmin_install: true
-
-percona_build_path: true
-mysql_benchmark_install: true
+mariadb_percona_install: true
 
 postgresql_default_auth_method: "md5"
 
@@ -114,16 +112,22 @@ cat << EOF > $TMP_DIR/playbook.yml
     - ansible-oh-my-zsh
     - ansible-intellij-idea
     - ansible-php
-#    - ansible-zendserver
-#    - ansible-php
 #    - ansible-nginx
-#    - ansible-iptables
+#    - ansible-docker
 #    - ansible-mariadb
-#    - ansible-mysql
-#    - ansible-elasticsearch
 #    - ansible-postgresql
 #    - ansible-go
+#    - ansible-elasticsearch
 #    - ansible-kibana
+#    - ansible-logstash
+#    - ansible-nodejs
+#    - ansible-iptables
+#    - ansible-mumble
+#    - ansible-supervisord
+
+# Alternatives
+#    - ansible-zendserver
+#    - ansible-mysql
 
 EOF
 
