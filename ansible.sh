@@ -10,7 +10,7 @@ cat << EOF > $TMP_DIR/hosts
 localhost ansible_connection=local
 EOF
 
-# Create group_vars for the webservers
+# Create group_vars for the web servers
 mkdir -p $TMP_DIR/group_vars 2> /dev/null
 cat << EOF > $TMP_DIR/group_vars/webservers
 
@@ -32,9 +32,7 @@ mariadb_root_password: "i_am_root"
 mariadb_phpmyadmin_pw: "i_am_admin"
 mariadb_phpmyadmin_pw_controluser: "i_am_control"
 mariadb_phpmyadmin_install: true
-
-percona_build_path: true
-mysql_benchmark_install: true
+mariadb_percona_install: true
 
 postgresql_default_auth_method: "md5"
 
@@ -65,6 +63,8 @@ postgresql_pg_hba_default:
     comment: 'IPv6 local connections:'
 
 idea_install_gnome: true
+idea_install_chrome: true
+idea_install_sublime: true
 
 postgresql_users:
   - name: testuser
@@ -109,18 +109,25 @@ cat << EOF > $TMP_DIR/playbook.yml
 
   roles:
     - ansible-oracle-java
-    - ansible-zendserver
-#    - ansible-php
-#    - ansible-nginx
-#    - ansible-iptables
     - ansible-oh-my-zsh
+    - ansible-intellij-idea
+    - ansible-php
+#    - ansible-nginx
+#    - ansible-docker
 #    - ansible-mariadb
-    - ansible-mysql
-    - ansible-elasticsearch
-    - ansible-postgresql
+#    - ansible-postgresql
 #    - ansible-go
-    - ansible-kibana
-#    - ansible-intellij-idea
+#    - ansible-elasticsearch
+#    - ansible-kibana
+#    - ansible-logstash
+#    - ansible-nodejs
+#    - ansible-iptables
+#    - ansible-mumble
+#    - ansible-supervisord
+
+# Alternatives
+#    - ansible-zendserver
+#    - ansible-mysql
 
 EOF
 

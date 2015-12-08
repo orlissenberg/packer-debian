@@ -91,3 +91,9 @@ fi
 if [ ! -d ./ansible-logstash ]; then
     git clone https://github.com/orlissenberg/ansible-logstash.git
 fi
+
+# Various
+
+if [ ! -d ./ansible-mumble  ]; then
+    git clone https://github.com/orlissenberg/ansible-mumble.git
+fi
