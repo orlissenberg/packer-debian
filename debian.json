@@ -1,0 +1,61 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-iso",
+            "guest_os_type": "Debian_64",
+            "http_directory": "http",
+            "boot_command": [
+                "<esc><wait>",
+                "install ",
+                "auto=true ",
+                "console-keymaps-at/keymap=us ",
+                "console-setup/ask_detect=false ",
+                "debconf/frontend=noninteractive ",
+                "debian-installer=en_US ",
+                "kbd-chooser/method=us ",
+                "keyboard-configuration/xkb-keymap=us ",
+                "locale=en_US ",
+                "netcfg/get_domain=unassigned-domain.org ",
+                "netcfg/get_hostname={{.Name}} ",
+                "preseed/url=http://{{.HTTPIP}}:{{.HTTPPort}}/preseed.cfg ",
+                "<enter>"
+            ],
+            "boot_wait": "10s",
+            "disk_size": 40000,
+            "iso_url": "http://cdimage.debian.org/debian-cd/{{user `version`}}/amd64/iso-cd/debian-{{user `version`}}-amd64-netinst.iso",
+            "iso_checksum": "6c3b53d2a33e34644153683f4492a7773340812c540eb3c5fdeee61e0c8dbafb2f9d634db0d2518b44fbf16770ec15f80561b49c280e27984e887ac71bfb3c3a",
+            "iso_checksum_type": "sha512",
+            "ssh_username": "{{user `ssh_username`}}",
+            "ssh_password": "{{user `password`}}",
+            "ssh_port": 22,
+            "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
+            "shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P now",
+            "vm_name": "debian-iso-amd64",
+            "output_directory": "build",
+            "vboxmanage": [
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--memory",
+                    "2048"
+                ],
+                [
+                    "modifyvm",
+                    "{{.Name}}",
+                    "--cpus",
+                    "1"
+                ]
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "scripts/base.sh",
+                "scripts/ansible.sh"
+            ],
+            "execute_command": "echo '{{user `password`}}' | sudo -S bash {{.Path}}"
+        }
+    ]
+}

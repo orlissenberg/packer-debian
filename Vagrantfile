@@ -10,14 +10,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian-8.2-x86_64"
+  config.vm.box = "debian-x86_64"
 
   # Official Puppet Labs Vagrant boxes.
   # https://atlas.hashicorp.com/puppetlabs
   # config.vm.box = "puppetlabs/debian-7.8-64-puppet"
 
   config.ssh.username = "debian"
-  config.ssh.password = "debian820"
+  config.ssh.password = "debian"
   # config.ssh.port = 22
 
   # Disable automatic box update checking. If you disable this, then
@@ -48,8 +48,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder ".", "/vagrant", type: "nfs"
-
+  # config.vm.synced_folder ".", "/vagrant", type: "nfs"
+  config.vm.synced_folder ".", "/vagrant"
+  
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
@@ -67,7 +68,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     # Use VBoxManage to customize the VM. For example to change memory:
     # https://docs.vagrantup.com/v2/virtualbox/configuration.html
     # https://www.virtualbox.org/manual/ch08.html
-    vb.customize ["modifyvm", :id, "--memory", "4096"]
+    # vb.customize ["modifyvm", :id, "--memory", "4096"]
+    vb.customize ["modifyvm", :id, "--memory", "8192"]
     vb.customize ["modifyvm", :id, "--vram", "12"]
     vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
     vb.customize ["modifyvm", :id, "--draganddrop", "hosttoguest"]

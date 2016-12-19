@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR=${PWD}
-PACKER_BIN=/opt/packer/packer
+PACKER_BIN=`which 'packer'`
 
 if [ ! -f $PACKER_BIN ]; then
     echo "Packer binary not found.";
@@ -12,20 +12,22 @@ mkdir -p ansible/roles 2> /dev/null
 
 cd $CURRENT_DIR
 
-if [ -f "build/debian-iso820-amd64.ovf" ]
+if [ -f "build/debian-iso-amd64.ovf" ]
 then
     echo "Provision"
-	$PACKER_BIN build debian-8.2-provision.json
+	$PACKER_BIN build -var-file=variables.json debian-provision.json
 else
     echo "Base"
-	$PACKER_BIN build debian-8.2.json
+    # Note: if the script fails, run it manually on the console ...
+    # packer build -var-file=variables.json debian.json
+	$PACKER_BIN build -var-file=variables.json debian.json
 fi
 
 cd $CURRENT_DIR/build
 
-if [ -f "debian-8.2-x86_64.box" ]
+if [ -f "debian-x86_64.box" ]
 then
-    vagrant box remove debian-8.2-x86_64 2> /dev/null
-    vagrant box add debian-8.2-x86_64 debian-8.2-x86_64.box
+    vagrant box remove debian-x86_64 2> /dev/null
+    vagrant box add debian-x86_64 debian-x86_64.box
 fi
 

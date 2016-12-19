@@ -14,6 +14,6 @@ REM IF EXIST "%PROJECT_PATH%\output-virtualbox-iso" rmdir /s /q output-virtualbo
 
 REM IF EXIST "%PROJECT_PATH%\packer_cache" rmdir /s /q packer_cache
 
-vagrant box remove debian-7.8-x86_64
+vagrant box remove debian-x86_64
 
 cls

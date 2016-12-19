@@ -1,0 +1,35 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-ovf",
+            "source_path": "build/debian-iso-amd64.ovf",
+            "ssh_username": "{{user `ssh_username`}}",
+            "ssh_password": "{{user `password`}}",
+            "ssh_wait_timeout": "{{user `ssh_wait_timeout`}}",
+            "shutdown_command": "echo '{{user `password`}}' | sudo -S shutdown -P now"
+        }
+    ],
+    "post-processors": [
+        {
+            "type": "vagrant",
+            "output": "build/debian-x86_64.box"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "scripts": [
+                "scripts/vagrant.sh"
+            ],
+            "execute_command": "echo '{{user `password`}}' | sudo -S bash {{.Path}}"
+        },
+        {
+            "type": "ansible-local",
+            "playbook_file": "playbook.yml",
+            "playbook_dir": "ansible",
+            "extra_arguments": [
+                "-v"
+            ]
+        }
+    ]
+}

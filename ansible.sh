@@ -14,13 +14,16 @@ EOF
 mkdir -p $TMP_DIR/group_vars 2> /dev/null
 cat << EOF > $TMP_DIR/group_vars/webservers
 
+# Oh My Zsh
 zsh_users:
   - root
   - debian
 
+# NGINX
 nginx_install_method: "package"
 nginx_uninstall_apache: true
 
+# PHP
 php_install_composer: true
 php_install_laravel: true
 php_laravel_user: debian
@@ -28,12 +31,14 @@ php_error_reporting: "E_ALL"
 php_display_errors: "On"
 php_display_startup_errors: "On"
 
+# MariaDB
 mariadb_root_password: "i_am_root"
 mariadb_phpmyadmin_pw: "i_am_admin"
 mariadb_phpmyadmin_pw_controluser: "i_am_control"
 mariadb_phpmyadmin_install: true
 mariadb_percona_install: true
 
+# Postgresql
 postgresql_default_auth_method: "md5"
 
 postgresql_pg_hba_default:
@@ -62,10 +67,6 @@ postgresql_pg_hba_default:
     method: '{{ postgresql_default_auth_method }}'
     comment: 'IPv6 local connections:'
 
-idea_install_gnome: true
-idea_install_chrome: true
-idea_install_sublime: true
-
 postgresql_users:
   - name: testuser
     pass: testpass
@@ -77,6 +78,12 @@ postgresql_user_privileges:
 postgresql_listen_addresses:
   - 0.0.0.0
 
+# IDEA
+idea_install_gnome: true
+idea_install_chrome: true
+idea_install_sublime: true
+
+# Mumble
 mumble_admin_password: "test-admin"
 mumble_db_path: /var/lib/mumble-server/mumble-server.sqlite
 mumble_log_path: /var/log/mumble-server/mumble-server.log
@@ -103,6 +110,8 @@ mumble_channels:
       parent_id: 10
       server_id: 1
 
+# NodeJS
+
 nodejs_install_gulp: true
 nodejs_install_grunt: true
 nodejs_install_coffee_script: true
@@ -122,7 +131,8 @@ cat << EOF > $TMP_DIR/playbook.yml
 
 - hosts: webservers
   gather_facts: yes
-  sudo: yes
+  become: true
+  become_method: sudo
 
   pre_tasks:
     - shell: echo 'hello'
@@ -138,15 +148,15 @@ cat << EOF > $TMP_DIR/playbook.yml
     - shell: updatedb
 
   roles:
-    - ansible-oracle-java
     - ansible-oh-my-zsh
-    - ansible-intellij-idea
-    - ansible-php
-    - ansible-nginx
-    - ansible-docker
-    - ansible-mariadb
+    - ansible-go
+#    - ansible-intellij-idea
+#    - ansible-oracle-java
+#    - ansible-php
+#    - ansible-nginx
+#    - ansible-docker
+#    - ansible-mariadb
 #    - ansible-postgresql
-#    - ansible-go
 #    - ansible-elasticsearch
 #    - ansible-kibana
 #    - ansible-logstash
