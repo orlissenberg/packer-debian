@@ -15,12 +15,12 @@ cd $CURRENT_DIR
 if [ -f "build/debian-iso-amd64.ovf" ]
 then
     echo "Provision"
-	$PACKER_BIN build -var-file=variables.json debian-provision.json
+    $PACKER_BIN build -var-file=variables.json debian-provision.json
 else
     echo "Base"
     # Note: if the script fails, run it manually on the console ...
     # packer build -var-file=variables.json debian.json
-	$PACKER_BIN build -var-file=variables.json debian.json
+    $PACKER_BIN build -var-file=variables.json debian.json
 fi
 
 cd $CURRENT_DIR/build

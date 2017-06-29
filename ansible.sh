@@ -82,6 +82,7 @@ postgresql_listen_addresses:
 idea_install_gnome: true
 idea_install_chrome: true
 idea_install_sublime: true
+idea_install_gitkraken: true
 
 # Mumble
 mumble_admin_password: "test-admin"
@@ -148,26 +149,26 @@ cat << EOF > $TMP_DIR/playbook.yml
     - shell: updatedb
 
   roles:
-    - ansible-oh-my-zsh
+#    - ansible-docker
+#    - ansible-elasticsearch
     - ansible-go
 #    - ansible-intellij-idea
-#    - ansible-oracle-java
-#    - ansible-php
-#    - ansible-nginx
-#    - ansible-docker
-#    - ansible-mariadb
-#    - ansible-postgresql
-#    - ansible-elasticsearch
+#    - ansible-iptables
 #    - ansible-kibana
 #    - ansible-logstash
-#    - ansible-nodejs
+#    - ansible-mariadb
 #    - ansible-mumble
-#    - ansible-iptables
+#    - ansible-nginx
+#    - ansible-nodejs
+#    - ansible-oh-my-zsh
+#    - ansible-oracle-java
+#    - ansible-php
+#    - ansible-postgresql
 #    - ansible-supervisord
 
 # Alternatives
-#    - ansible-zendserver
 #    - ansible-mysql
+#    - ansible-zendserver
 
 EOF
 
