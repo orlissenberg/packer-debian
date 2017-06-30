@@ -168,7 +168,6 @@ cat << EOF > $TMP_DIR/playbook.yml
 
 # Alternatives
 #    - ansible-mysql
-#    - ansible-zendserver
 
 EOF
 

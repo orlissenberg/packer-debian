@@ -58,10 +58,6 @@ if [ ! -d ./ansible-nginx ]; then
     git clone https://github.com/orlissenberg/ansible-nginx.git
 fi
 
-if [ ! -d ./ansible-zendserver  ]; then
-    git clone https://github.com/orlissenberg/ansible-zendserver.git
-fi
-
 if [ ! -d ./ansible-mumble  ]; then
     git clone https://github.com/orlissenberg/ansible-mumble.git
 fi

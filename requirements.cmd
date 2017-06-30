@@ -32,8 +32,6 @@ IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-intellij-idea" git clone http
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-nodejs" git clone https://github.com/orlissenberg/ansible-nodejs.git
 
 REM Web server
-IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-zendserver" git clone https://github.com/orlissenberg/ansible-zendserver.git
-
 IF NOT EXIST "%PROJECT_PATH%\ansible\roles\ansible-nginx" git clone https://github.com/orlissenberg/ansible-nginx.git
 
 REM Database
