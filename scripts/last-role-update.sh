@@ -8,16 +8,16 @@ for path in ${CURRENT_DIR}/../ansible/roles/*; do
     cd ${path}
 
     # https://stackoverflow.com/questions/7853332/how-to-change-git-log-date-formats
-    latest=`git --no-pager log -1 --date=format:'%Y/%m/%d' --pretty=format:%cd`
+    latest=`git --no-pager log -1 --date=iso --pretty=format:%cd`
     base=`basename ${path}`
     # echo "[${latest}] ${base}"
 done
 
 python << EOF
-import subprocess
-
 import os
 import datetime
+import subprocess
+import time
 
 rootdir = '${CURRENT_DIR}/../ansible/roles'
 rootdir = os.path.abspath(rootdir)
@@ -35,10 +35,11 @@ for name in os.listdir(rootdir):
   path = os.path.join(rootdir, name)
 
   if (os.path.isdir(path) and os.path.isdir(path + "/.git")):
-    proc = subprocess.Popen(['git', '--no-pager', 'log', '-1', '--date=unix', '--pretty=format:%cd'],stdout=subprocess.PIPE, cwd=path)
+    proc = subprocess.Popen(['git', '--no-pager', 'log', '-1', '--date=short', '--pretty=format:%cd'],stdout=subprocess.PIPE, cwd=path)
 
     for line in proc.stdout:
-      gits.append({ 'unix' : int(line.rstrip()), 'name' : name })
+      dt = datetime.datetime.strptime( line.rstrip(), "%Y-%m-%d" );
+      gits.append({ 'unix' : time.mktime(dt.timetuple()), 'name' : name })
 
 gits.sort(unix_compare, reverse=False)
 
