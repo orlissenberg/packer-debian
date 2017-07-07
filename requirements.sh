@@ -97,3 +97,7 @@ fi
 if [ ! -d ./ansible-mumble  ]; then
     git clone https://github.com/orlissenberg/ansible-mumble.git
 fi
+
+if [ ! -d ./ansible-minecraft  ]; then
+    git clone https://github.com/orlissenberg/ansible-minecraft.git
+fi
