@@ -122,7 +122,7 @@ EOF
 # Create Ansible config
 cat << EOF > ${TMP_DIR}/ansible.cfg
 [defaults]
-roles_path = $CURRENT_DIR/ansible/roles
+roles_path = ${CURRENT_DIR}/ansible/roles
 host_key_checking = False
 EOF
 
