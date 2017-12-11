@@ -20,6 +20,10 @@ On Windows:
 
     git config --global core.autocrlf true
     
-Dump all the host anssible variables to file:
+Dump all the host ansible variables to file:
 
     sudo ansible -m setup localhost -i hosts > /vagrant/ansible_vars_dump.json
+
+Change shell for other user:
+
+    sudo chsh -s /bin/zsh orlissenberg
