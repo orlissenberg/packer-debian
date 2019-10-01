@@ -145,7 +145,14 @@ cat << EOF > ${TMP_DIR}/playbook.yml
 #    - service: name=apache2 state=stopped enabled=no #must_exist=false (added in 2.0)
 #    - service: name=nginx state=started enabled=yes #must_exist=false (added in 2.0)
 #    - service: name=postgresql state=restarted enabled=yes #must_exist=false (added in 2.0)
+    
     - shell: echo 'goodbye'
+    
+    - name: Install locate
+      apt: 
+        name: locate
+        state: latest
+
     - shell: updatedb
 
   roles:

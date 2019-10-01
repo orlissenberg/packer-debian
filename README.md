@@ -25,6 +25,10 @@ https://cdimage.debian.org/mirror/cdimage/archive/9.4.0/amd64/iso-cd/
     or download and make it
     "iso_url": "debian-{{user `version`}}-amd64-netinst.iso",
 
+### Vagrant Guest Additions 
+
+    vagrant plugin install vagrant-vbguest
+
 ### Notes
 
 Linux version

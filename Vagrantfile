@@ -57,7 +57,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   config.vm.provider "virtualbox" do |vb|
     # Don't boot with headless mode
-    vb.gui = true
+    # vb.gui = true
 
     # https://pypi.python.org/pypi/speedtest-cli/
     # pip install speedtest-cli
