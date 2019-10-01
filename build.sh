@@ -1,29 +1,31 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR=${PWD}
-PACKER_BIN=`which 'packer'`
+PACKER_BIN=$(which 'packer')
 
-if [ ! -f $PACKER_BIN ]; then
+if [ ! -f "$PACKER_BIN" ]; then
     echo "Packer binary not found.";
     exit;
 fi
 
 mkdir -p ansible/roles 2> /dev/null
 
-cd $CURRENT_DIR
+cd "$CURRENT_DIR" || exit
 
 if [ -f "build/debian-iso-amd64.ovf" ]
 then
     echo "Provision"
+    sleep 5s
     $PACKER_BIN build -var-file=variables.json debian-provision.json
 else
     echo "Base"
+    sleep 5s
     # Note: if the script fails, run it manually on the console ...
     # packer build -var-file=variables.json debian.json
     $PACKER_BIN build -var-file=variables.json debian.json
 fi
 
-cd $CURRENT_DIR/build
+cd "$CURRENT_DIR"/build || exit
 
 if [ -f "debian-x86_64.box" ]
 then

@@ -1,6 +1,6 @@
 {
-    "version": "8.8.0",
-    "checksum": "27e41f13ce0f71e0fc503da41f3afa87285e0fc2e8ffb8d7ff4f572e26451dafd1a6f220c9256731d451400893437b0dfc17534c441f2a29a81130c59f790a50",
+    "version": "9.4.0",
+    "checksum": "345c4e674dc10476e8c4f1571fbcdba4ce9788aa5584c5e2590ab3e89e7bb9acb370536f41a3ac740eb92b6aebe3cb8eb9734874dd1658c68875981b8351bc38",
     "password": "debian",
     "ssh_username": "debian",
     "ssh_wait_timeout": "60m"

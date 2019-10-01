@@ -149,11 +149,13 @@ cat << EOF > ${TMP_DIR}/playbook.yml
     - shell: updatedb
 
   roles:
-#    - ansible-docker
-#    - ansible-elasticsearch
-    - ansible-go
+    - ansible-docker
+#    - ansible-oracle-java
+#    - ansible-php
+#    - ansible-go
 #    - ansible-intellij-idea
 #    - ansible-iptables
+#    - ansible-elasticsearch
 #    - ansible-kibana
 #    - ansible-logstash
 #    - ansible-mariadb
@@ -161,8 +163,6 @@ cat << EOF > ${TMP_DIR}/playbook.yml
 #    - ansible-nginx
 #    - ansible-nodejs
 #    - ansible-oh-my-zsh
-#    - ansible-oracle-java
-#    - ansible-php
 #    - ansible-postgresql
 #    - ansible-supervisord
 

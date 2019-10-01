@@ -22,7 +22,7 @@
             ],
             "boot_wait": "10s",
             "disk_size": 40000,
-            "iso_url": "https://cdimage.debian.org/cdimage/archive/{{user `version`}}/amd64/iso-cd/debian-{{user `version`}}-amd64-netinst.iso",
+            "iso_url": "https://cdimage.debian.org/mirror/cdimage/archive/{{user `version`}}/amd64/iso-cd/debian-{{user `version`}}-amd64-netinst.iso",
             "iso_checksum": "{{user `checksum`}}",
             "iso_checksum_type": "sha512",
             "ssh_username": "{{user `ssh_username`}}",

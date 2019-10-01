@@ -26,10 +26,7 @@
         {
             "type": "ansible-local",
             "playbook_file": "playbook.yml",
-            "playbook_dir": "ansible",
-            "extra_arguments": [
-                "-v"
-            ]
+            "playbook_dir": "ansible"
         }
     ]
 }

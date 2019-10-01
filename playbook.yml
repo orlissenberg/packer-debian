@@ -2,13 +2,30 @@
 
 - hosts: all
   gather_facts: yes
-  sudo: yes
+  become: true
 
   tasks:
-    - name: Install fail2ban.
-      apt: name=fail2ban state=latest
+    - name: Update and upgrade apt packages
+      become: true
+      apt:
+        upgrade: yes
+        update_cache: yes
 
-#  roles:
-#    - docker
+    - name: Install packages.
+      apt: 
+        name: ['software-properties-common','module-assistant','linux-headers-amd64']
+        state: latest
+    
+    - name: Apt dist-upgrade
+      shell: apt-get dist-upgrade
+      become: yes
+      args:
+        warn: no
+
+    # - name: Install linux headers
+    #   shell: apt-get install linux-headers-"$(uname -r)"
+    #   become: yes
+    #   args:
+    #     warn: no
 
 # Fin.
