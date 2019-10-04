@@ -82,6 +82,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   ansible.compatibility_mode = "2.0"
   # end
 
+  config.vm.provision "shell", 
+    inline: "ln -sf /vagrant/bash/.bash_aliases /home/debian/.bash_aliases", 
+    run: "always"
+
   # config.vbguest.iso_path = "E:\\Oracle\\VirtualBox\\VBoxGuestAdditions.iso"
 
   # set auto_update to false, if you do NOT want to check the correct

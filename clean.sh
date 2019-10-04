@@ -14,4 +14,9 @@ if [ $# -eq 1 ]
     then
       rm -Rf ansible
     fi
+
+    if [ "$1" = "box" ]
+    then
+      vagrant box remove debian-x86_64 2> /dev/null
+    fi
 fi
